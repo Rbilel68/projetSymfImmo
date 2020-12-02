@@ -6,10 +6,13 @@ use App\Repository\PropertyRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
 use PhpParser\Node\Scalar\String_;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
  * @ORM\Entity(repositoryClass=PropertyRepository::class)
+ * @UniqueEntity("title")
  */
 class Property
 {
@@ -25,6 +28,7 @@ class Property
     private $id;
 
     /**
+     * @Assert\Length(min=3, max=255)
      * @ORM\Column(type="string", length=255)
      */
     private $title;
@@ -36,6 +40,7 @@ class Property
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=15, max=300)
      */
     private $surface;
 
@@ -76,6 +81,7 @@ class Property
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex("/^[0-9]{5}/")
      */
     private $postal_code;
 
