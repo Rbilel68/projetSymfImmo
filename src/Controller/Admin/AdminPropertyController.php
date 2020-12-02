@@ -6,12 +6,11 @@ use App\Form\PropertyType;
 use App\Repository\PropertyRepository;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
-//use Symfony\Component\Form\FormTypeInterface;
-//use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 Class AdminPropertyController extends AbstractController
 {
@@ -33,7 +32,7 @@ Class AdminPropertyController extends AbstractController
 
     /**
      * @Route("/admin", name="admin.property.index")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function index()
     {
@@ -43,9 +42,8 @@ Class AdminPropertyController extends AbstractController
 
     /**
      * @Route("/admin/property/create", name="admin.property.new")
-     * @param Property $property
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @return RedirectResponse|Response
      */
     public function new(Request $request){
         $property = new Property();
@@ -55,6 +53,8 @@ Class AdminPropertyController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $this->em->persist($property);
             $this->em->flush();
+
+            $this->addFlash("success", "Création du bien validé !");
             return $this->redirectToRoute('admin.property.index');
         }
 
@@ -68,7 +68,7 @@ Class AdminPropertyController extends AbstractController
      * @Route("/admin/{id}", name="admin.property.edit")
      * @param Property $property
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function edit(Property $property, Request $request){
 
@@ -76,6 +76,7 @@ Class AdminPropertyController extends AbstractController
         $form->handleRequest($request);
          if($form->isSubmitted() && $form->isValid()){
              $this->em->flush();
+             $this->addFlash("success", "Votre modification a bien été pris en compte !");
              return $this->redirectToRoute("admin.property.index");
          }
         return $this->render("admin/property/edit.html.twig", [
@@ -83,5 +84,22 @@ Class AdminPropertyController extends AbstractController
             'form'=> $form->createView()
 
         ]);
+    }
+
+    /**
+     * @Route("/admin/property/{id}", name="admin.property.delete", methods="DELETE")
+     * @param Property $property
+     * @param Request $request
+     * @return RedirectResponse|Response
+     */
+    public function delete(Property $property, Request $request){
+        if ($this->isCsrfTokenValid('delete' . $property->getId(), $request->get('_token'))){
+            $this->em->remove($property);
+            $this->em->flush();
+
+            $this->addFlash("success", "Bien supprimé !");
+        }
+        return $this->redirectToRoute("admin.property.index");
+
     }
 }
