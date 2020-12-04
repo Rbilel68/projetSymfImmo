@@ -12,7 +12,10 @@
                 {{ message }}
             </div>
         {% endfor %}
-        <table class="table table-striped">
+        <div class="text-center">
+            <a href="{{ path('admin.property.new') }}" class="btn btn-primary">Créer un nouveau bien</a>
+        </div>
+        <table class="table table-striped" style="margin-top: 2.5em">
             <thead>
             <tr>
                 <td>Titre</td>
@@ -38,8 +41,6 @@
 
 
         </table>
-        <div class="text-right">
-            <a href="{{ path('admin.property.new') }}" class="btn btn-primary">Créer un nouveau bien</a>
-        </div>
+
     </div>
 {%  endblock %}
