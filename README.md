@@ -47,13 +47,18 @@
  - Librairie php faker permet de generer de nombreuse donnée 
 
 ## Infos utile :
- - Accès au back-end url : localhost:8080/admin
+ - Accès au back-end url : localhost:8000/admin
  - Login : demo
  - Mot de passe: demo
  - Déconnection du back-end : bouton déconnecter situer dans la navbar a droite
 -----------------------------------------------
 ###  Récuperer Projet : 
     git clone https://github.com/Rbilel68/projetSymfImmo.git
+ 
+ Se mettre dans projetSymfImmo : 
+    
+    cd projetSymfImmo
+
  Lancer la commande suivante pour recuperer le reste du projet (ex dossier vendor ):
 
     composer install
