@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Property;
 use App\Entity\PropertySearch;
 use App\Form\PropertySearchType;
+use App\Repository\OptionRepository;
 use App\Repository\PropertyRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
