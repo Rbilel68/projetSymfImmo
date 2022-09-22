@@ -57,10 +57,16 @@
                         <td>{{ property.heatType }}</td>
                     </tr>
                 </table>
-                <div class="col-md-4">
-                    <h2>Spécificités</h2>
-                </div>
+                
             </div>
+            <div class="col-md-4">
+                    <h2>Spécificités</h2>
+                    <ul class="list-group">
+                    {% for option in property.options %}
+                    <li class="list-group-item">{{option.name}}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
         </div>
     </div>
 {% endblock %}
