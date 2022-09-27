@@ -12,7 +12,12 @@
         <div class="row flex">
             {% for property in properties %}
             <div class="col-3">
-                <div class="card">
+                    <div class="card mb-4">
+                        {% if property.filename %}
+                            <img src="{{ vich_uploader_asset(property, 'imageFile') }}" alt="card-img-top" style="width: 100%; height:auto;">
+                        {% else %}
+                            <img src="{{ '/images/properties/imgDefault.jpg' }}" alt="card-img-top" style="width: 100%; height:auto;">
+                        {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">
                             <a href="{{ path('property.show', {id: property.id, slug: property.slug}) }}">{{ property.title }} </a>
