@@ -8,7 +8,6 @@ use App\Entity\PropertySearch;
 use App\Form\PropertySearchType;
 use App\Notification\ContactNotification;
 use App\Repository\PropertyRepository;
-use Doctrine\Common\Persistence\ObjectManager;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

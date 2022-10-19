@@ -99,9 +99,6 @@
     "egulias/email-validator": {
         "version": "2.1.24"
     },
-    "fzaninotto/faker": {
-        "version": "v1.9.1"
-    },
     "imagine/imagine": {
         "version": "1.2.4"
     },
@@ -209,9 +206,6 @@
     "symfony/css-selector": {
         "version": "v4.4.17"
     },
-    "symfony/debug": {
-        "version": "v4.4.17"
-    },
     "symfony/debug-bundle": {
         "version": "4.1",
         "recipe": {
@@ -306,9 +300,6 @@
         "version": "v4.4.17"
     },
     "symfony/http-kernel": {
-        "version": "v4.4.17"
-    },
-    "symfony/inflector": {
         "version": "v4.4.17"
     },
     "symfony/intl": {
